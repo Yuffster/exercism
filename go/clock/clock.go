@@ -28,8 +28,7 @@ type Clock struct {
 // Hour and minute can be beyond the range of supported clock values
 // and will be normalized.
 func New(hour, minute int) Clock {
-	c := Clock{0}
-	return c.Add(hour*minutes + minute)
+	return Clock{0}.Add(hour*minutes + minute)
 }
 
 // Converts the minutes stored in the clock to a string of
