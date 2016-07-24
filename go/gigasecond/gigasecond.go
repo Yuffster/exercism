@@ -1,6 +1,9 @@
 package gigasecond
-import "time"
-import "math"
+
+import(
+	"time"
+	"math"
+)
 
 const testVersion = 4
 
