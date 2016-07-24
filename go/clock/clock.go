@@ -40,7 +40,7 @@ func (c Clock) String() string {
 	if h == 24 {
 		h = 0
 	}
-	m = m % minutes
+	m %= minutes
 	return fmt.Sprintf("%02d:%02d", h, m)
 }
 
@@ -55,7 +55,7 @@ func (c Clock) Add(minutes int) Clock {
 			c.minutes = clockLimit + c.minutes
 		}
 	} else if c.minutes > clockLimit {
-		c.minutes = c.minutes % clockLimit
+		c.minutes %= clockLimit
 	}
 	return c
 }
