@@ -8,7 +8,7 @@ const testVersion = 2
 type Kind int
 
 const (
-	NaT = iota
+	NaT Kind = iota
 	Equ
 	Iso
 	Sca
