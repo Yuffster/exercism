@@ -29,22 +29,18 @@ func Hey(s string) string {
 // This is generally a good indication that the speaker needs to
 // chill out.
 func isShouting(s string) bool {
-	chill := 0
+	chill := false
 	for _, c := range s {
 		r := rune(c)
 		if unicode.IsUpper(r) {
 			// If the characters are capital, it's shouting.
-			chill++
+			chill = true
 		} else if unicode.IsLower(r) {
 			// Any lowercase letter means it's not shouting.
 			return false
 		}
 	}
-	if chill > 0 {
-		// If we had at least one capital letter and no lowercase,
-		// it's shouting.
-		return true
-	} else {
-		return false
-	}
+	// If we had at least one capital letter and no lowercase,
+	// it's shouting.
+	return chill
 }
