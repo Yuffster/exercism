@@ -6,6 +6,8 @@ func Handshake(n int) []string {
 	if n <= 0 {
 		return []string{}
 	}
+	// Each code includes the command to append to our output array in
+	// the event that the bit at that place (one-indexed) is flipped.
 	codes := []string{"wink", "double blink", "close your eyes", "jump"}
 	out := []string{}
 	for i, c := range codes {
