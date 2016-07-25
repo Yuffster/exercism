@@ -9,8 +9,8 @@ const testVersion = 2
 // Send a message to Bob and get a response.
 func Hey(s string) string {
 	s = strings.TrimSpace(s)
-	// If nothing is said...
 	if len(s) == 0 {
+		// If nothing is said...
 		return "Fine. Be that way!"
 	}
 	if isShouting(s) {
@@ -18,14 +18,14 @@ func Hey(s string) string {
 	}
 	// Check ending punctuation.
 	p := s[len(s)-1:]
-	// Statement.
 	if p == "." {
+		// Statement.
 		return "Whatever."
-		// Question.
 	} else if p == "?" {
+		// Question.
 		return "Sure."
-		// Default response.
 	} else {
+		// Default response.
 		return "Whatever."
 	}
 }
@@ -38,17 +38,17 @@ func isShouting(s string) bool {
 	chill := 0
 	for _, c := range s {
 		r := rune(c)
-		// If the characters are capital, it's shouting.
 		if unicode.IsUpper(r) {
+			// If the characters are capital, it's shouting.
 			chill++
-		// Any lowercase letter means it's not shouting.
 		} else if unicode.IsLower(r) {
+			// Any lowercase letter means it's not shouting.
 			return false
 		}
 	}
-	// If we had at least one capital letter and no lowercase,
-	// it's shouting.
 	if chill > 0 {
+		// If we had at least one capital letter and no lowercase,
+		// it's shouting.
 		return true
 	} else {
 		return false
