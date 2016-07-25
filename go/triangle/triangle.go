@@ -5,6 +5,15 @@ import "math"
 
 const testVersion = 2
 
+type Kind int
+
+const (
+	NaT = iota
+	Equ
+	Iso
+	Sca
+)
+
 // Returns a Kind type depending on what kind of triangle we have.
 //
 // Refer to the constant list (NaT, Equ, Iso, Sca) for information
@@ -47,10 +56,3 @@ func notNumbers(ns ...float64) bool {
 	}
 	return false
 }
-
-type Kind int
-
-const NaT = Kind(0)
-const Equ = Kind(1)
-const Iso = Kind(2)
-const Sca = Kind(3)
