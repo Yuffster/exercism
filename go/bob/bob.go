@@ -18,10 +18,7 @@ func Hey(s string) string {
 	}
 	// Check ending punctuation.
 	p := s[len(s)-1:]
-	if p == "." {
-		// Statement.
-		return "Whatever."
-	} else if p == "?" {
+	if p == "?" {
 		// Question.
 		return "Sure."
 	} else {
