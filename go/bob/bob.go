@@ -16,15 +16,12 @@ func Hey(s string) string {
 	if isShouting(s) {
 		return "Whoa, chill out!"
 	}
-	// Check ending punctuation.
-	p := s[len(s)-1:]
-	if p == "?" {
-		// Question.
+	if s[len(s)-1:] == "?" {
+		// Ends with a question mark.
 		return "Sure."
-	} else {
-		// Default response.
-		return "Whatever."
 	}
+	// Default response.
+	return "Whatever."
 }
 
 // Check to see if the speaker is shouting.
