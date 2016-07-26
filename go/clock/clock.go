@@ -1,5 +1,5 @@
-// clock provides a struct (Clock) which keeps track of a signed integer of
-// minutes.
+// Package clock provides a Clock (int) which keeps track of a signed
+// integer of minutes.
 package clock
 
 import "fmt"
