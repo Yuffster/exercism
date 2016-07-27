@@ -1,14 +1,18 @@
 // Package house procedurally generates a song.
 package house
 
-import "strings"
+import(
+	"strings"
+	"bytes"
+)
+
 
 const testVersion = 2
 
 // Embed embeds a noun phrase as the object of relative clause with a
 // transitive verb.
 func Embed(clause, noun string) string {
-	if noun == "" {
+	if noun == "" { 
 		return clause
 	}
 	return clause + " " + noun
@@ -21,7 +25,7 @@ func Verse(subject string, phrases []string, noun string) string {
 	for _, p := range phrases {
 		phrase = append(phrase, Embed(p, ""))
 	}
-	out := []string{subject}
+	out := []string{ subject }
 	out = append(out, phrase...)
 	out = append(out, noun)
 	return strings.Join(out, " ")
@@ -41,25 +45,23 @@ func constructVerse(n int) string {
 		"farmer sowing his corn",
 		"horse and the hound and the horn",
 	}
-	verbs := []string{
+	verbs := []string {
 		"", "lay in", "ate", "killed", "worried", "tossed", "milked",
 		"kissed", "married", "woke", "kept", "belonged to",
 	}
-	lines := "This is the " + things[n]
+	var buf bytes.Buffer
+	buf.WriteString("This is the "+things[n])
 	for i := n; i > 0; i-- {
-		lines += "\nthat " + verbs[i] + " the " + things[i-1]
-	}
-	if n == 11 {
-		return lines
-	}
-	return lines + "\n\n"
+        buf.WriteString("\nthat "+verbs[i]+" the "+things[i-1])
+    }
+    return buf.String() + "\n\n"
 }
 
 // Song generates the full text of "The House That Jack Built".
 func Song() string {
-	lines := ""
+	var buf bytes.Buffer
 	for i := 0; i <= 11; i++ {
-		lines += constructVerse(i)
+		buf.WriteString(constructVerse(i))
 	}
-	return lines
+	return strings.TrimSpace(buf.String())
 }
