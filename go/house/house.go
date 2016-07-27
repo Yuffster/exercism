@@ -1,18 +1,17 @@
 // Package house procedurally generates a song.
 package house
 
-import(
-	"strings"
+import (
 	"bytes"
+	"strings"
 )
-
 
 const testVersion = 2
 
 // Embed embeds a noun phrase as the object of relative clause with a
 // transitive verb.
 func Embed(clause, noun string) string {
-	if noun == "" { 
+	if noun == "" {
 		return clause
 	}
 	return clause + " " + noun
@@ -25,7 +24,7 @@ func Verse(subject string, phrases []string, noun string) string {
 	for _, p := range phrases {
 		phrase = append(phrase, Embed(p, ""))
 	}
-	out := []string{ subject }
+	out := []string{subject}
 	out = append(out, phrase...)
 	out = append(out, noun)
 	return strings.Join(out, " ")
@@ -34,7 +33,7 @@ func Verse(subject string, phrases []string, noun string) string {
 // constructVerse constructs a verse for the nth position. Verse should
 // probably do this, but its structure is prescribed by the challenge
 // and I don't understand it.
-func constructVerse(n int) string {
+func constructVerse(s, e int) string {
 	things := []string{
 		"house that Jack built.", "malt", "rat", "cat", "dog",
 		"cow with the crumpled horn",
@@ -45,16 +44,16 @@ func constructVerse(n int) string {
 		"farmer sowing his corn",
 		"horse and the hound and the horn",
 	}
-	verbs := []string {
+	verbs := []string{
 		"", "lay in", "ate", "killed", "worried", "tossed", "milked",
 		"kissed", "married", "woke", "kept", "belonged to",
 	}
 	var buf bytes.Buffer
-	buf.WriteString("This is the "+things[n])
+	buf.WriteString("This is the " + things[n])
 	for i := n; i > 0; i-- {
-        buf.WriteString("\nthat "+verbs[i]+" the "+things[i-1])
-    }
-    return buf.String() + "\n\n"
+		buf.WriteString("\nthat " + verbs[i] + " the " + things[i-1])
+	}
+	return buf.String() + "\n\n"
 }
 
 // Song generates the full text of "The House That Jack Built".
