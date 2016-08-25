@@ -18,4 +18,4 @@ subsetOf a [] = False
 subsetOf a b
     | length a > length b    = False -- Can't be a superset if it's bigger.
     | a == take (length a) b = True  -- Could be a prefix.
-    | otherwise              = subsetOf a $ tail b
+    | otherwise              = subsetOf a (tail b)
